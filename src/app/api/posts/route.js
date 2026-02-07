@@ -9,10 +9,17 @@ export async function GET() {
 }
 
 export async function POST(req) {
-  await connectDB();
-  const body = await req.json();
+  try {
+    await connectDB();
 
-  const newPost = await EventModel.create(body);
+    const body = await req.json();
+    console.log("BODY FROM FRONTEND:", body); // 👈 এটা দেখো
 
-  return Response.json(newPost);
+    const newEvent = await EventModel.create(body);
+
+    return Response.json(newEvent, { status: 201 });
+  } catch (error) {
+    console.log("REAL ERROR:", error.message);
+    return Response.json({ error: error.message }, { status: 500 });
+  }
 }

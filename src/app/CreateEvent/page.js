@@ -1,12 +1,14 @@
 "use client";
 import React, { useState } from "react";
 import page from "./../page";
+import axios from "axios";
+import { baseurl } from "../Config/BaseUrl";
 
 function Page() {
   const [errorMsg, setErrormsg] = useState("");
   const [formData, setFormData] = useState({
     title: "",
-    contact: "",
+    description: "",
     image: "",
     category: "",
   });
@@ -16,18 +18,17 @@ function Page() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
-    if (!formData.title) {
-      setErrormsg("Please enter event title");
-    }
-    if (!formData.content.trim()) {
-      setErrormsg("Please enter event content");
-      return;
-    }
-
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
+
+    try {
+      const res = await axios.post(`${baseurl}/api/posts`, formData);
+      console.log("SUCCESS:", res.data);
+    } catch (error) {
+      console.log("ERROR FROM API:", error.response?.data);
+    }
   };
+
   return (
     <div className="relative min-h-screen flex items-center justify-center">
       <form
@@ -47,8 +48,8 @@ function Page() {
           />
           <textarea
             onChange={handleInputChange}
-            value={formData.contact}
-            name="contact"
+            value={formData.description}
+            name="description"
             className="border border-gray-600 rounded-lg p-3 resize-none bg-transparent focus:outline-none focus:ring-2 focus:ring-amber-400 text-white"
             placeholder="Content"
             rows={5}
