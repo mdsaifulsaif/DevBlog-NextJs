@@ -5,7 +5,7 @@ import Navber from "./Navber";
 function Hero() {
   return (
     <div className="py-5 relative text-center  h-screen border border-amber-400 ">
-      <h1 className="text-2xl pb-2">Level Up Your Web Development Journey</h1>
+      <h1 className="text-5xl pb-2">Level Up Your Web Development Journey</h1>
       <p>
         Practical tutorials, real-world MERN & Next.js projects, UI inspiration,
         <br />

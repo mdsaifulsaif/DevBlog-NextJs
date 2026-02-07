@@ -11,7 +11,7 @@ function Navber() {
 
         <div className="flex items-center justify-center gap-3 ">
           <Link href="/">Home</Link>
-          <Link href="/">About</Link>
+          <Link href="/About">About</Link>
           <Link href="/">Create Event</Link>
         </div>
       </nav>
