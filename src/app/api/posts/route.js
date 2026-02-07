@@ -16,8 +16,3 @@ export async function POST(req) {
 
   return Response.json(newPost);
 }
-
-// export async function POST(req, res) {
-//   const database = await connectDB();
-//   const { title, descripton, contact, image, category } = req.body;
-// }

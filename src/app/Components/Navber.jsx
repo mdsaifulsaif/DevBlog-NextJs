@@ -3,8 +3,8 @@ import React from "react";
 
 function Navber() {
   return (
-    <div className="md:w-6xl mx-auto py-5">
-      <nav className="flex items-center justify-between ">
+    <div className="md:w-6xl px-3 mx-auto bg-transparent py-5">
+      <nav className="flex bg-transparent items-center justify-between ">
         <div>
           <h1 className="text-lg font-bold ">Dev Event</h1>
         </div>
@@ -12,7 +12,7 @@ function Navber() {
         <div className="flex items-center justify-center gap-3 ">
           <Link href="/">Home</Link>
           <Link href="/About">About</Link>
-          <Link href="/">Create Event</Link>
+          <Link href="/CreateEvent">Create Event</Link>
         </div>
       </nav>
     </div>
