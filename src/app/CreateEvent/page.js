@@ -1,8 +1,9 @@
 "use client";
 import React, { useState } from "react";
-import page from "./../page";
+
 import axios from "axios";
 import { baseurl } from "../Config/BaseUrl";
+import { toast } from "sonner";
 
 function Page() {
   const [errorMsg, setErrormsg] = useState("");
@@ -23,7 +24,9 @@ function Page() {
 
     try {
       const res = await axios.post(`${baseurl}/api/posts`, formData);
-      console.log("SUCCESS:", res.data);
+      if (res.data) {
+        toast.success("Event created successfully!");
+      }
     } catch (error) {
       console.log("ERROR FROM API:", error.response?.data);
     }

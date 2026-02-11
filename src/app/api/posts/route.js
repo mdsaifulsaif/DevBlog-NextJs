@@ -1,10 +1,15 @@
 import { connectDB } from "@/app/lib/db";
-import EventModel from "../models/Event.model";
+import EventModel from "@/app/api/models/Event.model";
+// import EventModel from "../models/Event.model";
 
 export async function GET() {
+  await connectDB();
+
+  const Events = await EventModel.find();
   return Response.json({
     success: true,
-    message: "API is working ",
+    Events,
+    message: "Events fetched sucessfully",
   });
 }
 
